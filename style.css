@@ -1,0 +1,221 @@
+:root {
+    /* Dark Mode Palette */
+    --bg-primary: #1e1e2d; /* Main Background */
+    --bg-secondary: #27293d; /* Card Background */
+    --sidebar-bg: #1c1c28;
+    --text-color: #f1f1f1;
+    --primary-color: #007bff; /* Blue - Accents */
+    --success-color: #28a745; /* Green - Safe */
+    --warning-color: #ffc107; /* Yellow - Medium Risk */
+    --danger-color: #dc3545; /* Red - High Risk */
+    --border-color: #3f3f50;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+/* --- App Layout --- */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- Sidebar --- */
+.sidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    text-align: center;
+    padding: 10px 0 30px;
+    color: var(--primary-color);
+}
+.logo i { font-size: 2.5rem; margin-bottom: 10px; }
+.logo h2 { margin: 0; font-size: 1.5rem; }
+
+.nav-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    border-right: 5px solid transparent;
+}
+.nav-menu a i { margin-right: 15px; font-size: 1.1rem; }
+.nav-menu a:hover, .nav-menu a.active {
+    background-color: var(--bg-secondary);
+    color: var(--primary-color);
+    border-right-color: var(--primary-color);
+}
+
+/* --- Main Content --- */
+.main-content {
+    flex-grow: 1;
+    padding: 20px 30px;
+}
+
+/* Header/Status Bar */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.status-bar {
+    padding: 8px 15px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.status-bar i { margin-right: 10px; }
+.status-bar.safe { background-color: var(--success-color); }
+.status-bar.medium { background-color: var(--warning-color); }
+.status-bar.high { background-color: var(--danger-color); }
+
+.user-info i { margin-right: 10px; color: var(--primary-color); }
+
+/* Pages & Cards */
+.page { display: none; }
+.page.active { display: block; }
+
+.card {
+    background-color: var(--bg-secondary);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+}
+.card h3 { 
+    margin-top: 0; 
+    color: var(--primary-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+/* --- Forms & Controls --- */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+.btn-primary { background-color: var(--primary-color); color: white; }
+.btn-primary:hover { background-color: #0069d9; }
+.btn-danger { background-color: var(--danger-color); color: white; }
+.btn-danger:hover { background-color: #c82333; }
+.btn-success { background-color: var(--success-color); color: white; }
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #333649;
+    color: var(--text-color);
+}
+
+/* --- Dashboard Specific --- */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+.metric-box {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #2e3048;
+}
+.metric-box .value { font-size: 2rem; font-weight: bold; margin-bottom: 5px; }
+.metric-box.safe-score { color: var(--success-color); }
+.metric-box.threat-count { color: var(--danger-color); }
+.metric-box.id-rotations { color: var(--primary-color); }
+
+/* --- Risk Indicator --- */
+#risk-display {
+    text-align: center;
+    padding: 30px;
+}
+#risk-display .label { font-size: 1.2rem; margin-bottom: 10px; }
+#risk-level {
+    font-size: 3rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+#risk-level.low { background-color: var(--success-color); color: var(--bg-primary); }
+#risk-level.medium { background-color: var(--warning-color); color: var(--bg-primary); }
+#risk-level.high { background-color: var(--danger-color); color: white; }
+
+/* --- Logs Table --- */
+.log-card table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+.log-card th, .log-card td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.log-card th {
+    background-color: #333649;
+    font-weight: 600;
+}
+.log-card tr:hover {
+    background-color: #333649;
+}
+.log-risk.high { color: var(--danger-color); font-weight: bold; }
+.log-risk.medium { color: var(--warning-color); }
+.log-risk.low { color: var(--success-color); }
+
+/* --- Toggle Switch --- */
+.toggle-switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border-color);
+}
+/* ... (Add standard toggle switch CSS here, modified for dark mode) ... */
+.toggle-switch input[type="checkbox"] { display: none; }
+.slider {
+    position: relative;
+    width: 50px; height: 26px;
+    background-color: #ccc; border-radius: 26px; cursor: pointer; transition: .4s;
+}
+.slider:before {
+    content: ""; position: absolute; height: 18px; width: 18px; left: 4px; bottom: 4px; 
+    background-color: white; transition: .4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: var(--success-color); }
+input:checked + .slider:before { transform: translateX(24px); }
+/* End of toggle switch */

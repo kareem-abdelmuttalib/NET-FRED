@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NET FRED - Integrated Security System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-fingerprint"></i>
+                <h2>NET FRED</h2>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active" data-page="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="#" class="nav-item" data-page="logs"><i class="fas fa-list-ul"></i> Reputation & Logs</a>
+                <a href="#" class="nav-item" data-page="identity"><i class="fas fa-user-secret"></i> Identity Control</a>
+                <a href="#" class="nav-item" data-page="settings"><i class="fas fa-cogs"></i> Settings</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div id="status-indicator" class="status-bar safe">
+                    <i class="fas fa-shield-alt"></i>
+                    <span id="status-text">System Status: **Secure**</span>
+                </div>
+                <div class="user-info">
+                    <i class="fas fa-bell"></i>
+                    <span>Admin</span>
+                </div>
+            </header>
+
+            <div id="dashboard-page" class="page active">
+                </div>
+            <div id="logs-page" class="page">
+                </div>
+            <div id="identity-page" class="page">
+                </div>
+            <div id="settings-page" class="page">
+                </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+    <script>
+        // Placeholder for Chart initialization script (will be in script.js)
+        document.addEventListener('DOMContentLoaded', () => {
+            initDashboardPage();
+            initCharts(); 
+        });
+    </script>
+</body>
+</html>
